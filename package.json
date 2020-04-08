@@ -1,0 +1,54 @@
+{
+  "name": "liliput",
+  "version": "0.0.1",
+  "description": "A config manager",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "preversion" : "npm run lint",
+    "version" : "npm run format && git add -A src",
+    "postversion" : "git push && git push --tags",
+    "prepublishOnly" : "npm test && npm run lint",
+    "prepare" : "npm run build",
+    "test": "jest --config jestconfig.json",
+    "build": "tsc",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "lint": "eslint \"src/**/*.ts\" --fix"
+  },
+  "files": [
+    "lib/**/*"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vijayrathore8492/liliput.git"
+  },
+  "keywords": [
+    "config", 
+    "config-manager", 
+    "configuration", 
+    "configs", 
+    "conf", 
+    "liliput", 
+    "configuration-manager", 
+    "manage config"
+  ],
+  "author": "vijayrathore8492",
+  "license": "GPL",
+  "bugs": {
+    "url": "https://github.com/vijayrathore8492/liliput/issues"
+  },
+  "homepage": "https://github.com/vijayrathore8492/liliput#readme",
+  "devDependencies": {
+    "@types/jest": "^25.2.1",
+    "@typescript-eslint/eslint-plugin": "^2.27.0",
+    "@typescript-eslint/parser": "^2.27.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-config-prettier": "^6.10.1",
+    "eslint-plugin-import": "^2.20.2",
+    "jest": "^25.3.0",
+    "prettier": "^2.0.4",
+    "ts-jest": "^25.3.1",
+    "typescript": "^3.8.3"
+  }
+}
