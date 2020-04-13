@@ -10,11 +10,11 @@ export default class CentralStore {
   static nodeCache = new NodeCache();
 
   public static get(name: string) {
-    let value = this.nodeCache.get(`liliput.config.${name}`)
+    let value = this.nodeCache.get(`lilliput.config.${name}`)
 
     if ( value == undefined ){
       value = this.__searchInJsonFile(name)
-      this.nodeCache.set(`liliput.config.${name}`, value)
+      this.nodeCache.set(`lilliput.config.${name}`, value)
     }
     return value;
   }
@@ -29,15 +29,15 @@ export default class CentralStore {
       return ;
     }
 
-    const db = connection.db(DotenvStore.get("LILIPUT_MONGO_DB"));
+    const db = connection.db(DotenvStore.get("LILLIPUT_MONGO_DB"));
     const result = await db.collection(
-                                String(DotenvStore.get("LILIPUT_MONGO_COLLECTION"))
+                                String(DotenvStore.get("LILLIPUT_MONGO_COLLECTION"))
                               ).find({ "status": 1 }).toArray();
     connection.close();
     const jsonConfig = this.__parseResultAsJsonString(result);
     fs.writeFileSync(this.jsonConfigFile, JSON.stringify(jsonConfig));
     _.forEach(jsonConfig, (value, key) => {
-      this.nodeCache.set(`liliput.config.${key}`, value);
+      this.nodeCache.set(`lilliput.config.${key}`, value);
     });
   }
 
@@ -50,11 +50,11 @@ export default class CentralStore {
   }
 
   private static __mongoUrl = () => {
-    return DotenvStore.get("LILIPUT_MONGO_URI") || (function(connString){
-      connString += DotenvStore.get("LILIPUT_MONGO_USER") ? DotenvStore.get("LILIPUT_MONGO_USER") + ":" : "" ;
-      connString += DotenvStore.get("LILIPUT_MONGO_PASS") ? DotenvStore.get("LILIPUT_MONGO_PASS") + "@" : "" ;
-      connString += DotenvStore.get("LILIPUT_MONGO_HOST")
-      connString += DotenvStore.get("LILIPUT_MONGO_PORT") ? ":" + DotenvStore.get("LILIPUT_MONGO_PORT") : "";
+    return DotenvStore.get("LILLIPUT_MONGO_URI") || (function(connString){
+      connString += DotenvStore.get("LILLIPUT_MONGO_USER") ? DotenvStore.get("LILLIPUT_MONGO_USER") + ":" : "" ;
+      connString += DotenvStore.get("LILLIPUT_MONGO_PASS") ? DotenvStore.get("LILLIPUT_MONGO_PASS") + "@" : "" ;
+      connString += DotenvStore.get("LILLIPUT_MONGO_HOST")
+      connString += DotenvStore.get("LILLIPUT_MONGO_PORT") ? ":" + DotenvStore.get("LILLIPUT_MONGO_PORT") : "";
       return connString;
     }("mongodb://"));
   }

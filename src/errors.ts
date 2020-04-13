@@ -1,6 +1,6 @@
 export default {
-  "001": "Liliput: Can't connect to mongo",
-  "002": "Liliput: Custom file path is invalid",
-  "003": "Liliput: Malformed JSON, Array at root is not supported",
-  "004": "Liliput: Custom file is not json"
+  "001": "Lilliput: Can't connect to mongo",
+  "002": "Lilliput: Custom file path is invalid",
+  "003": "Lilliput: Malformed JSON, Array at root is not supported",
+  "004": "Lilliput: Custom file is not json"
 }
