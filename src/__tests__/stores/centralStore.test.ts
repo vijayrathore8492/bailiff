@@ -22,9 +22,9 @@ describe("CentralStore", () => {
     await db.collection("central_configs").insertMany(configJson);
     connection.close();
     sinon.stub(DotenvStore, 'get').callsFake((str) => {
-      if(str == "LILLIPUT_MONGO_URI") return uri;
-      if(str == "LILLIPUT_MONGO_DB") return dbName;
-      if(str == "LILLIPUT_MONGO_COLLECTION") return "central_configs";
+      if(str == "BAILIFF_MONGO_URI") return uri;
+      if(str == "BAILIFF_MONGO_DB") return dbName;
+      if(str == "BAILIFF_MONGO_COLLECTION") return "central_configs";
     })
 
     await CentralStore.loadCentralConfigs();
