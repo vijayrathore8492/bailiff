@@ -10,8 +10,8 @@
     "postversion": "git push && git push --tags",
     "prepublishOnly": "npm test && npm run lint",
     "prepare": "npm run build",
-    "test": "jest --config jestconfig.json",
-    "build": "tsc",
+    "test": "jest --config jestconfig.json  --coverage --verbose",
+    "build": "npx tsc",
     "format": "prettier --write \"src/**/*.ts\"",
     "lint": "eslint \"src/**/*.ts\" --fix"
   },
@@ -40,14 +40,27 @@
   "homepage": "https://github.com/vijayrathore8492/liliput#readme",
   "devDependencies": {
     "@types/jest": "^25.2.1",
+    "@types/lodash": "^4.14.149",
+    "@types/mongodb": "^3.5.4",
+    "@types/node": "^13.11.1",
     "@typescript-eslint/eslint-plugin": "^2.27.0",
     "@typescript-eslint/parser": "^2.27.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.1.0",
     "eslint-plugin-import": "^2.20.2",
     "jest": "^25.3.0",
+    "mongodb-memory-server": "^6.5.2",
     "prettier": "^2.0.4",
+    "sinon": "^9.0.2",
     "ts-jest": "^25.3.1",
     "typescript": "^3.8.3"
+  },
+  "dependencies": {
+    "app-root-path": "^3.0.0",
+    "callsite": "^1.0.0",
+    "dotenv": "^8.2.0",
+    "lodash": "^4.17.15",
+    "mongodb": "^3.5.5",
+    "node-cache": "^5.1.0"
   }
 }

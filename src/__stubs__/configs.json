@@ -1,0 +1,12 @@
+[
+  {
+    "name": "JWT_SECURE_KEY",
+    "value": "123",
+    "status": 1
+  },
+  {
+    "name": "JWT_SECURE_PASS",
+    "value": "secure_pass",
+    "status": 1
+  }
+]
