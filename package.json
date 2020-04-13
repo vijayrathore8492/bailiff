@@ -1,5 +1,5 @@
 {
-  "name": "lilliput",
+  "name": "bailiff",
   "version": "0.0.1",
   "description": "A config manager",
   "main": "lib/index.js",
@@ -20,7 +20,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vijayrathore8492/lilliput.git"
+    "url": "git+https://github.com/vijayrathore8492/bailiff.git"
   },
   "keywords": [
     "config",
@@ -28,16 +28,16 @@
     "configuration",
     "configs",
     "conf",
-    "lilliput",
+    "bailiff",
     "configuration-manager",
     "manage config"
   ],
   "author": "vijayrathore8492",
   "license": "GPL",
   "bugs": {
-    "url": "https://github.com/vijayrathore8492/lilliput/issues"
+    "url": "https://github.com/vijayrathore8492/bailiff/issues"
   },
-  "homepage": "https://github.com/vijayrathore8492/lilliput#readme",
+  "homepage": "https://github.com/vijayrathore8492/bailiff#readme",
   "devDependencies": {
     "@types/jest": "^25.2.1",
     "@types/lodash": "^4.14.149",

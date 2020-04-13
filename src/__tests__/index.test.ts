@@ -2,9 +2,9 @@
 import { MongoMemoryServer } from 'mongodb-memory-server';
 const mongod = new MongoMemoryServer();
 import { MongoClient } from 'mongodb';
-import Lilliput from '../index';
+import Bailiff from '../index';
 
-describe("Lilliput", () => {
+describe("Bailiff", () => {
   
   describe("get", () => {
     describe("From .env", () => {
@@ -13,23 +13,23 @@ describe("Lilliput", () => {
       })
       
       it("works", () => {
-        expect(Lilliput.get("A_DOTENV_CONF")).toEqual('aDotenvConf')
+        expect(Bailiff.get("A_DOTENV_CONF")).toEqual('aDotenvConf')
       })
     })
 
     describe("From .customStore", () => {
       const config = {"directJson": "it works"};
       beforeEach(()=>{
-        Lilliput.addStore(config)
+        Bailiff.addStore(config)
           .addStore("../__stubs__/customConfig.json")
       })
       
       it("works for direct Json", () => {
-        expect(Lilliput.get("directJson")).toEqual(config["directJson"])
+        expect(Bailiff.get("directJson")).toEqual(config["directJson"])
       })
 
       it("works for file json", () => {
-        expect(Lilliput.get("name")).toEqual("JWT_SECURE_KEY")
+        expect(Bailiff.get("name")).toEqual("JWT_SECURE_KEY")
       })
     })
 
@@ -43,9 +43,9 @@ describe("Lilliput", () => {
             "status": 1
           }
         ];  
-        process.env.LILLIPUT_MONGO_URI = await mongod.getUri();
-        process.env.LILLIPUT_MONGO_DB = await mongod.getDbName();
-        process.env.LILLIPUT_MONGO_COLLECTION = "central_configs";
+        process.env.BAILIFF_MONGO_URI = await mongod.getUri();
+        process.env.BAILIFF_MONGO_DB = await mongod.getDbName();
+        process.env.BAILIFF_MONGO_COLLECTION = "central_configs";
         const dbName = await mongod.getDbName();
         const uri = await mongod.getUri();
         const connection = await MongoClient.connect(uri, {
@@ -55,7 +55,7 @@ describe("Lilliput", () => {
         const db = await connection.db(dbName);
         await db.collection("central_configs").insertMany(configJson);
         connection.close();
-        await Lilliput.loadCentralConfigs();
+        await Bailiff.loadCentralConfigs();
       })
 
       afterAll(async () => {
@@ -63,7 +63,7 @@ describe("Lilliput", () => {
       });
 
       it("works", () => {
-        expect(Lilliput.get("INDEX_TEST")).toEqual("123");
+        expect(Bailiff.get("INDEX_TEST")).toEqual("123");
       })
     })
   })

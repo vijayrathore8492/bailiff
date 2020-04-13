@@ -5,7 +5,7 @@ import callsite from 'callsite';
 import path from 'path';
 import * as _ from 'lodash'
 
-export default class Lilliput {
+export default class Bailiff {
   private static __configStoresPrioritized = [
     CustomStore,
     DotenvStore,
@@ -29,4 +29,4 @@ export default class Lilliput {
   }
 }
 
-Lilliput.loadCentralConfigs();
+Bailiff.loadCentralConfigs();
