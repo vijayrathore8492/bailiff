@@ -8,11 +8,11 @@ import * as _ from 'lodash'
 export default class Liliput {
   private static __configStoresPrioritized = [
     CustomStore,
-    CentralStore,
-    DotenvStore
+    DotenvStore,
+    CentralStore
   ];
 
-  static addStore(config: {} | string){
+  public static addStore(config: {} | string){
     const stack = callsite(), requester = stack[1].getFileName();
     CustomStore.add(config, path.dirname(requester));
     return this;
@@ -23,4 +23,10 @@ export default class Liliput {
       return value ? value : store.get(name);
     }, "")
   }
+
+  public static async loadCentralConfigs(){
+    await CentralStore.loadCentralConfigs();
+  }
 }
+
+Liliput.loadCentralConfigs();

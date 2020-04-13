@@ -10,8 +10,6 @@ const mongod = new MongoMemoryServer();
 
 const configJson = JSON.parse(fs.readFileSync(path.join(__dirname, "../../__stubs__/configs.json"), 'utf-8'));  
 
-// when mongod killed, it's running status should be `false`
-mongod.getInstanceInfo();
 describe("CentralStore", () => {
   beforeAll(async () => {
     const dbName = await mongod.getDbName();
@@ -26,7 +24,9 @@ describe("CentralStore", () => {
     sinon.stub(DotenvStore, 'get').callsFake((str) => {
       if(str == "LILIPUT_MONGO_URI") return uri;
       if(str == "LILIPUT_MONGO_DB") return dbName;
+      if(str == "LILIPUT_MONGO_COLLECTION") return "central_configs";
     })
+    
     await CentralStore.loadCentralConfigs();
   });
 

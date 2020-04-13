@@ -10,7 +10,7 @@
     "postversion": "git push && git push --tags",
     "prepublishOnly": "npm test && npm run lint",
     "prepare": "npm run build",
-    "test": "jest --config jestconfig.json  --coverage --verbose",
+    "test": "jest --config jestconfig.json  --coverage --verbose --detectOpenHandles",
     "build": "npx tsc",
     "format": "prettier --write \"src/**/*.ts\"",
     "lint": "eslint \"src/**/*.ts\" --fix"

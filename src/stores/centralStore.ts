@@ -30,7 +30,10 @@ export default class CentralStore {
     }
 
     const db = connection.db(DotenvStore.get("LILIPUT_MONGO_DB"));
-    const result = await db.collection("central_configs").find({ "status": 1 }).toArray();
+    const result = await db.collection(
+                                String(DotenvStore.get("LILIPUT_MONGO_COLLECTION"))
+                              ).find({ "status": 1 }).toArray();
+    connection.close();
     const jsonConfig = this.__parseResultAsJsonString(result);
     fs.writeFileSync(this.jsonConfigFile, JSON.stringify(jsonConfig));
     _.forEach(jsonConfig, (value, key) => {
