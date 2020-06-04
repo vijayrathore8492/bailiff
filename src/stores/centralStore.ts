@@ -27,9 +27,8 @@ export default class CentralStore {
       );
     } catch(e) {
       console.error(Errors["001"]);
+      return;
     }
-
-    if (!connection) return ;
 
     const db = connection.db(DotenvStore.get("BAILIFF_MONGO_DB"));
     const result = await db.collection(
@@ -62,6 +61,8 @@ export default class CentralStore {
   }
 
   private static __searchInJsonFile(name: string) {
+    if(!fs.existsSync(this.jsonConfigFile)) return ;
+    
     return JSON.parse(fs.readFileSync(this.jsonConfigFile, 'utf-8'))[name];
   }
 }
