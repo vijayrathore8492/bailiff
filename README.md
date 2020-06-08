@@ -51,7 +51,7 @@ bailiff.get("MY_CONFIG_VAR");  
 #### To add custom configurations
 
 ```javascript
-const bailiff = require("bailiff");
+const bailiff = require("bailiff").default;
 ```
 
 OR
