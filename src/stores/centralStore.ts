@@ -54,7 +54,7 @@ export default class CentralStore {
     return DotenvStore.get("BAILIFF_MONGO_URI") || (function(connString){
       connString += DotenvStore.get("BAILIFF_MONGO_USER") ? DotenvStore.get("BAILIFF_MONGO_USER") + ":" : "" ;
       connString += DotenvStore.get("BAILIFF_MONGO_PASS") ? DotenvStore.get("BAILIFF_MONGO_PASS") + "@" : "" ;
-      connString += DotenvStore.get("BAILIFF_MONGO_HOST") ? DotenvStore.get("BAILIFF_MONGO_PASS") : "" ;
+      connString += DotenvStore.get("BAILIFF_MONGO_HOST") ? DotenvStore.get("BAILIFF_MONGO_HOST") : "" ;
       connString += DotenvStore.get("BAILIFF_MONGO_PORT") ? ":" + DotenvStore.get("BAILIFF_MONGO_PORT") : "";
       return connString;
     }("mongodb://"));
