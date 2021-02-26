@@ -66,6 +66,6 @@ export default class CentralStore {
   private static __searchInJsonFile(name: string) {
     if(!fs.existsSync(this.jsonConfigFile)) return ;
     
-    return JSON.parse(fs.readFileSync(this.jsonConfigFile, 'utf-8'))[name];
+    return JSON.parse(fs.readFileSync(this.jsonConfigFile, 'utf-8') || "{}")[name];
   }
 }
