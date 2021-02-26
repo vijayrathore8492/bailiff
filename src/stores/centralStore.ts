@@ -36,7 +36,10 @@ export default class CentralStore {
                               ).find({ "status": 1 }).toArray();
     connection.close();
     const jsonConfig = this.__parseResultAsJsonString(result);
-    fs.writeFileSync(this.jsonConfigFile, JSON.stringify(jsonConfig));
+    const jsongStringConfig = JSON.stringify(jsonConfig);
+    if(jsongStringConfig != "{}"){
+      fs.writeFileSync(this.jsonConfigFile, jsongStringConfig);
+    }
     _.forEach(jsonConfig, (value, key) => {
       this.nodeCache.set(`bailiff.config.${key}`, value);
     });
