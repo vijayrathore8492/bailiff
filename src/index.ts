@@ -29,4 +29,4 @@ export default class Bailiff {
   }
 }
 
-Bailiff.loadCentralConfigs();
+await Bailiff.loadCentralConfigs();
