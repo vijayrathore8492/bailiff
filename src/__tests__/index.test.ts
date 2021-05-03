@@ -2,17 +2,22 @@
 import { MongoMemoryServer } from 'mongodb-memory-server';
 const mongod = new MongoMemoryServer();
 import { MongoClient } from 'mongodb';
-import Bailiff from '../index';
+import BailiffPromise from '../index';
 
-describe("Bailiff", () => {
-  
+describe("BailiffPromise",  () => {
   describe("get", () => {
+    let Bailiff;
+
+    beforeAll(async() => {
+      Bailiff = await BailiffPromise();
+    })
+    
     describe("From .env", () => {
       beforeEach(()=>{
         process.env.A_DOTENV_CONF = 'aDotenvConf'
       })
       
-      it("works", () => {
+      it("works",async () => {
         expect(Bailiff.get("A_DOTENV_CONF")).toEqual('aDotenvConf')
       })
     })

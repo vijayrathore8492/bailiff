@@ -43,32 +43,39 @@ BAILIFF_MONGO_COLLECTION="your-collection-name"
 Add `bailiff` in your code.
 
 ```javascript
-const bailiff = require("bailiff");
+const bailiffPromise = require("bailiff").default;
 
-bailiff.get("MY_CONFIG_VAR");  
+bailiffPromise.then(bailiff =>{
+  bailiff.get("MY_CONFIG_VAR"); 
+}) 
 ```
 
 #### To add custom configurations
 
 ```javascript
-const bailiff = require("bailiff").default;
+const bailiffPromise = require("bailiff").default;
 ```
 
 OR
 
 ```javascript
-import bailiff from "bailiff"
+import bailiffPromise from "bailiff"
 ```
 
 ```javascript
 // To add custom Hash config data or/and a JSON file. You can chain addStore.
-bailiff.addStore({"MY_CONFIG_VAR": "MY_CONFIG_VALUE", "ANOTHER_CONFIG": "ANOTHER_VALUE"})
-       .addStore("relative/path/to/your/json");
+bailiffPromise.then(bailiff =>{
+  bailiff.addStore({"MY_CONFIG_VAR": "MY_CONFIG_VALUE", "ANOTHER_CONFIG": "ANOTHER_VALUE"})
+         .addStore("relative/path/to/your/json");
+})
 ```
 
 bailiff uses Singleton pattern. Add config store once and then use it later anywhere in the code in any file.
 
 ```javascript
+const bailiffPromise = require("bailiff").default;
+const bailiff = await bailiffPromise();
+
 bailiff.get("ANOTHER_CONFIG");
 ```
 

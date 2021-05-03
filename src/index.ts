@@ -1,32 +1,5 @@
-import CentralStore from "./stores/centralStore";
-import DotenvStore from "./stores/dotenvStore";
-import CustomStore from "./stores/customStore";
-import callsite from 'callsite';
-import path from 'path';
-import * as _ from 'lodash'
+import Bailiff from "./bailiff";
 
-export default class Bailiff {
-  private static __configStoresPrioritized = [
-    CustomStore,
-    DotenvStore,
-    CentralStore
-  ];
-
-  public static addStore(config: {} | string){
-    const stack = callsite(), requester = stack[1].getFileName();
-    CustomStore.add(config, path.dirname(requester));
-    return this;
-  }
-
-  public static get(name: string) {
-    return _.reduce(this.__configStoresPrioritized, (value, store) => {
-      return value ? value : store.get(name);
-    }, "")
-  }
-
-  public static async loadCentralConfigs(){
-    await CentralStore.loadCentralConfigs();
-  }
+export default async function bailiffPromise() {
+  return await Bailiff.loadCentralConfigs();
 }
-
-await Bailiff.loadCentralConfigs();
