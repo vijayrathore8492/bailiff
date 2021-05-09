@@ -15,6 +15,9 @@
     "format": "prettier --write \"src/**/*.ts\"",
     "lint": "eslint \"src/**/*.ts\" --fix"
   },
+  "bin": {
+    "bailiff-init": "./lib/cli.js"
+  },
   "files": [
     "lib/**/*"
   ],
@@ -59,7 +62,7 @@
     "app-root-path": "^3.0.0",
     "callsite": "^1.0.0",
     "dotenv": "^8.2.0",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.21",
     "mongodb": "^3.5.5",
     "node-cache": "^5.1.0"
   }

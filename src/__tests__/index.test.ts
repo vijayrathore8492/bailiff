@@ -2,14 +2,13 @@
 import { MongoMemoryServer } from 'mongodb-memory-server';
 const mongod = new MongoMemoryServer();
 import { MongoClient } from 'mongodb';
-import BailiffPromise from '../index';
+import BailiffPromise from '../init';
+import Bailiff from '../index';
 
-describe("BailiffPromise",  () => {
+describe("Bailiff",  () => {
   describe("get", () => {
-    let Bailiff;
-
     beforeAll(async() => {
-      Bailiff = await BailiffPromise();
+      await BailiffPromise;
     })
     
     describe("From .env", () => {
