@@ -18,7 +18,7 @@ export default class Bailiff {
     return this;
   }
 
-  public static get(name: string) {
+  public static get(name: string): object | string {
     return _.reduce(this.__configStoresPrioritized, (value, store) => {
       return value ? value : store.get(name);
     }, "")
